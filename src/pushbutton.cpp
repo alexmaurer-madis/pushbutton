@@ -22,7 +22,9 @@ PushButton::PushButton(int pin, int pressed_state, int read_cycle_ms) {
   pressed_state_ = pressed_state;
   pin_ = pin;
   read_cycle_ms_ = read_cycle_ms;
+
   last_time_ = millis();
+  last_digital_read_ = digitalRead(pin_);
 };
 
 /**
