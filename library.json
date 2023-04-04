@@ -2,7 +2,7 @@
   "name": "pushbutton",
   "version": "1.0.0",
   "keywords": "push button short press long press",
-  "description": "Library to be able to know if the user did a short or long pulse on a push button",
+  "description": "Library to be able to know if the user did a short or long press on a push button",
   "authors": {
     "name": "Alexandre Maurer",
     "url": "https://github.com/alexmaurer-madis",
