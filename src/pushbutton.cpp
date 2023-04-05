@@ -50,7 +50,8 @@ PushButton::PushButton(int pin, int pressed_state, int long_press_ms,
  * @param long_press_ms The time in ms the button must be pressed to trigger a
  * long press (default 2000ms)
  */
-void setPin(uint8_t pin, uint8_t mode, int pressed_state, int long_press_ms) {
+void PushButton::setPin(uint8_t pin, uint8_t mode, int pressed_state,
+                        int long_press_ms) {
   pin_ = pin;
   pinMode(pin, mode);
   pressed_state_ = pressed_state;
