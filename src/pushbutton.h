@@ -31,7 +31,7 @@ public:
   int getLongPressDuration(void);
   void setLongPressDuration(int long_press_ms);
 
-  void update(void);
+  void process(void);
   State getState(void);
 
 private:

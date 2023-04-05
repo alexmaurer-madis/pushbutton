@@ -81,7 +81,7 @@ void PushButton::setReadInterval(int read_interval_ms) {
  * @brief To be called within your loop()
  *
  */
-void PushButton::update(void) {
+void PushButton::process(void) {
   if (!init_)
     return;
 
