@@ -48,7 +48,7 @@ private:
   struct {
     unsigned long time;
     bool eventOccured;
-  } rising_, falling_;
+  } rising_;
 };
 
 #endif

@@ -44,7 +44,7 @@ PushButton::PushButton(int pin, int pressed_state, int long_press_ms,
  * @brief Set the corresponding pin of the push button
  *
  * @param pin Pin number
- * @param mode Pin mode, genrally INPUT (default) or INPUT_PULLUP
+ * @param mode Pin mode INPUT (default) or INPUT_PULLUP
  * @param pressed_state LOW or HIGH. Pin input level when the push button is
  * pressed (default HIGH)
  * @param long_press_ms The time in ms the button must be pressed to trigger a
