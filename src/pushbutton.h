@@ -12,6 +12,7 @@
 #define __PUSHBUTTON_H
 
 #include <Arduino.h>
+#include <cstdint>
 
 class PushButton {
 
@@ -19,30 +20,29 @@ public:
   enum class State { nothing, shortPress, longPress };
 
   PushButton(void);
-  PushButton(int pin, int pressed_state = HIGH, int long_press_ms = 2000,
-             int read_cycle_ms = 20);
+  PushButton(uint8_t pin, int pressed_state = HIGH,
+             uint16_t long_press_ms = 2000, uint16_t read_cycle_ms = 20);
 
   void setPin(uint8_t pin, uint8_t mode = INPUT, int pressed_state = HIGH,
-              int long_press_ms = 2000);
+              uint16_t long_press_ms = 2000);
 
-  int getReadInterval(void);
-  void setReadInterval(int read_cycle_ms);
+  void setReadInterval(uint16_t read_cycle_ms);
+  uint16_t getReadInterval(void);
 
-  int getLongPressDuration(void);
-  void setLongPressDuration(int long_press_ms);
+  void setLongPressDuration(uint16_t long_press_ms);
+  uint16_t getLongPressDuration(void);
 
   void process(void);
   State getState(void);
 
 private:
   bool init_ = false;
-  unsigned long last_time_;
-  int read_interval_ms_ = 20;
+  uint16_t read_interval_ms_ = 20;
+  uint16_t long_press_ms_ = 2000;
+  uint8_t pin_;
   int pressed_state_ = HIGH;
-  int pin_;
+  unsigned long last_time_;
   int last_digital_read_;
-  int long_press_ms_ = 2000;
-
   State state_ = State::nothing;
 
   struct {

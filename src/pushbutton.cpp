@@ -28,8 +28,8 @@ PushButton::PushButton(void) { last_time_ = millis(); }
  * @param read_interval_ms interval in ms between each time the input is read
  * (default 20ms)
  */
-PushButton::PushButton(int pin, int pressed_state, int long_press_ms,
-                       int read_interval_ms) {
+PushButton::PushButton(uint8_t pin, int pressed_state, uint16_t long_press_ms,
+                       uint16_t read_interval_ms) {
   pin_ = pin;
   pressed_state_ = pressed_state;
   long_press_ms_ = long_press_ms;
@@ -51,7 +51,7 @@ PushButton::PushButton(int pin, int pressed_state, int long_press_ms,
  * long press (default 2000ms)
  */
 void PushButton::setPin(uint8_t pin, uint8_t mode, int pressed_state,
-                        int long_press_ms) {
+                        uint16_t long_press_ms) {
   pin_ = pin;
   pinMode(pin, mode);
   pressed_state_ = pressed_state;
@@ -62,20 +62,36 @@ void PushButton::setPin(uint8_t pin, uint8_t mode, int pressed_state,
 }
 
 /**
- * @brief Return the current read interval value
- *
- * @return int read interval in ms
- */
-int PushButton::getReadInterval(void) { return read_interval_ms_; }
-
-/**
  * @brief Set the interval between each time the input pin is read
  *
  * @param read_cycle_ms interval in ms
  */
-void PushButton::setReadInterval(int read_interval_ms) {
+void PushButton::setReadInterval(uint16_t read_interval_ms) {
   read_interval_ms_ = read_interval_ms;
 }
+
+/**
+ * @brief Return the current read interval value
+ *
+ * @return int read interval in ms
+ */
+uint16_t PushButton::getReadInterval(void) { return read_interval_ms_; }
+
+/**
+ * @brief Set the time the button must be pressed to trigger a long press
+ *
+ * @param long_press_ms time in ms
+ */
+void PushButton::setLongPressDuration(uint16_t long_press_ms) {
+  long_press_ms_ = long_press_ms;
+}
+
+/**
+ * @brief Return the current long press duration
+ *
+ * @return int duration in ms
+ */
+uint16_t PushButton::getLongPressDuration(void) { return long_press_ms_; }
 
 /**
  * @brief To be called within your loop()
@@ -126,20 +142,4 @@ PushButton::State PushButton::getState(void) {
   state_ = State::nothing;
 
   return s;
-}
-
-/**
- * @brief Return the current long press duration
- *
- * @return int duration in ms
- */
-int PushButton::getLongPressDuration(void) { return long_press_ms_; }
-
-/**
- * @brief Set the time the button must be pressed to trigger a long press
- *
- * @param long_press_ms time in ms
- */
-void PushButton::setLongPressDuration(int long_press_ms) {
-  long_press_ms_ = long_press_ms;
 }
